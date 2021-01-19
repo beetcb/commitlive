@@ -1,0 +1,27 @@
+{
+  "name": "@beetcb/commitlive",
+  "version": "1.0.0",
+  "description": "write conventional commits livly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beetcb/commitlive.git"
+  },
+  "keywords": [
+    "conventional-commits",
+    "git",
+    "repll"
+  ],
+  "author": "beetcb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beetcb/commitlive/issues"
+  },
+  "homepage": "https://github.com/beetcb/commitlive#readme",
+  "dependencies": {
+    "repll": "^1.1.8"
+  }
+}
