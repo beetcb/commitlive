@@ -21,9 +21,8 @@ const status = {
 }
 
 onTab(v => {
-  refresh()
   const selectedList = Object.keys(conventionalMap).filter(
-    e => e.includes(v) && e.length > v.length
+    e => e.startsWith(v) && e.length > v.length
   )
   return [selectedList, conventionalMap]
 })
