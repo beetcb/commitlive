@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/beetcb/commitlive#readme",
   "dependencies": {
-    "repll": "^1.1.8"
+    "repll": "^1.1.9"
   }
 }

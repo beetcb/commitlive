@@ -1,16 +1,5 @@
-const { replLive, refresh, onTab, onLine, onInput } = require('repll')
+const { replLive, onTab, onLine, onInput } = require('repll')
 const conventionalMap = require('./convention')
-
-const prompts = [
-  'description› ',
-  'body› ',
-  'footer› ',
-  'Your commit message is: ',
-]
-const repll = replLive(
-  prompts,
-  '<type>[optional scope]: <description>, press TAB to show some hints'
-)
 
 const status = {
   typed: false,
@@ -19,6 +8,19 @@ const status = {
   isBody: false,
   isFooter: false,
 }
+
+const prompts = [
+  'description› ',
+  'body› ',
+  'footer› ',
+  'Your commit message is: <hide>',
+]
+
+const repll = replLive(
+  prompts,
+  '<type>[optional scope]: <description>, press TAB to show some hints'
+)
+const { refresh } = repll
 
 onTab(v => {
   const selectedList = Object.keys(conventionalMap).filter(
@@ -56,17 +58,16 @@ function checkType() {
 }
 
 function checkScope() {
-  const { rl } = repll
   const addDes = () =>
     refresh('Now add description: a short summary of the code changes')
-  if (/\(\w+\)/.test(repll.input)) {
+  if (/\(\w+\)$/.test(repll.input)) {
     addDes()
-    // rl.write(': ')
+    repll.write(': ')
     return (status.scoped = true)
   }
   if (/\:$/.test(repll.input)) {
     addDes()
-    // rl.write(' ')
+    repll.write(' ')
     return true
   }
 }
@@ -74,7 +75,7 @@ function checkScope() {
 function checkDes() {
   if (!repll.input.endsWith(': ')) {
     refresh(
-      'Now add optional body: providing additional contextual information'
+      'Now optionally add body: providing additional contextual information'
     )
     return (status.descriped = true)
   } else {
@@ -83,11 +84,13 @@ function checkDes() {
 }
 
 function checkBody() {
-  refresh('Now add optional one or more footers')
+  refresh('Now optionally add footers')
   return (status.isBody = true)
 }
 
 function checkFooter() {
-  refresh(`${repll.input}\n\nPress ctrl+s to commit it, ctrl+c to quit`)
+  refresh(
+    `${repll.history.join('\n\n')}\nPress ctrl+s to commit it, ctrl+c to quit`
+  )
   return (status.isFooter = true)
 }
