@@ -1,7 +1,9 @@
 const spawnSync = require('child_process').spawnSync
 const c = require('chalk')
 const excute = (command, args, mes) => {
-  const spawn = spawnSync(command, [...args.split(' '), mes ? mes : ''], {
+  args = args.split(' ')
+  if (mes) args.push(mes)
+  const spawn = spawnSync(command, args, {
     encoding: 'utf8',
   })
   return spawn.stdout || spawn.stderr
