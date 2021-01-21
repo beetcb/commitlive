@@ -1,4 +1,6 @@
-module.exports = {
+const c = require('chalk')
+
+const convention = {
   typeMap: {
     //Copied from github.com/commitizen/conventional-commit-types
     build: 'Changes that affect the build system or external dependencies',
@@ -23,3 +25,15 @@ module.exports = {
     footer: 'Now optionally add footers',
   },
 }
+
+const { areaDes } = convention
+
+Object.keys(areaDes).forEach(e => {
+  areaDes[e] = c`{cyan ${areaDes[e]}}`
+})
+
+for (const i in convention) {
+  Object.freeze(i)
+}
+
+module.exports = convention

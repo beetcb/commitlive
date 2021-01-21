@@ -1,4 +1,5 @@
 const { replLive, onTab, onLine, onInput } = require('repll')
+const c = require('chalk')
 const { checkType, checkScope, checkDes } = require('./continuousCheck')
 const { typeMap, areaDes } = require('./convention')
 const { prompts, placeholder } = require('./repl')
@@ -18,7 +19,7 @@ onLine(l => {
     case 4: {
       const commit = repll.history.filter(e => e.length)
       repll.refresh(
-        `${commit.join('\n\n')}\nPress ctrl+d to commit it, ctrl+c to quit`
+        c`\n{yellow ${commit.join('\n\n')}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
       )
       // console.log(repll.history)
       break
@@ -32,6 +33,7 @@ onInput(() => {
 })
 
 onTab(v => {
+  continuousCheck()
   const selectedList = Object.keys(typeMap).filter(
     e => e.startsWith(v) && e.length > v.length
   )
