@@ -8,7 +8,7 @@ exports.prompts = [
 ].map(e => c`{blue ${e}}`)
 
 exports.placeholder = [
-  '<type>[optional scope]: <description>, press TAB to show some hints',
+  '<type>[optional scope]: <description>',
   '[optional body]',
   '[optional footer(s)]',
 ]

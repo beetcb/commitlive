@@ -19,7 +19,9 @@ onLine(l => {
     case 4: {
       const commit = repll.history.filter(e => e.length)
       repll.refresh(
-        c`\n{yellow ${commit.join('\n\n')}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
+        c`\n{yellow ${commit.join(
+          '\n\n'
+        )}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
       )
       break
     }
@@ -36,7 +38,7 @@ onTab(v => {
   const selectedList = Object.keys(typeMap).filter(
     e => e.startsWith(v) && e.length > v.length
   )
-  return [selectedList, typeMap]
+  return repll.inputLine === 1 ? [selectedList, typeMap] : [[]]
 })
 
 function printTips(name) {
