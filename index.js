@@ -21,7 +21,6 @@ onLine(l => {
       repll.refresh(
         c`\n{yellow ${commit.join('\n\n')}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
       )
-      // console.log(repll.history)
       break
     }
   }
