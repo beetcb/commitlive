@@ -1,17 +1,18 @@
 const spawnSync = require('child_process').spawnSync
 const c = require('chalk')
-const excute = (command, args) => {
-  const spawn = spawnSync(command, args.split(' '), { encoding: 'utf8' })
+const excute = (command, args, mes) => {
+  const spawn = spawnSync(command, [...args.split(' '), mes ? mes : ''], {
+    encoding: 'utf8',
+  })
   return spawn.stdout || spawn.stderr
 }
 
 const gh = args => excute('gh', args)
-const git = args => excute('git', args)
+const git = (args, mes) => excute('git', args, mes)
 
-exports.gitCommit = (mes, flags = '-m') => {
-  const commit = `commit ${flags} ${mes}`
-  console.log(mes)
-  return git(commit)
+exports.gitCommit = (flags = '-m', mes) => {
+  const commit = `commit ${flags}`
+  return git(commit, mes)
 }
 
 const ghIssues = num => {

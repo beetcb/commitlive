@@ -16,10 +16,10 @@ const convention = {
     test: 'Adding missing tests or correcting existing tests',
   },
   areaDes: {
-    type: 'Add a <type>: a noun, feat, fix, etc.',
+    type: 'Add <type>: a noun, feat, fix, etc.',
     scope:
-      'Optionally Add a (scope): describing a section of the codebase surrounded by parenthesis',
-    des: 'Now add <description>: a short summary of the code changes',
+      'Optionally Add (scope): describing a section of the codebase surrounded by parenthesis',
+    des: 'Add <description>: a short summary of the code changes',
     body: 'Optionally Add [body]: providing additional contextual information',
     footer: 'Optionally add [footers]',
   },

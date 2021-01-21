@@ -1,4 +1,11 @@
-const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('../repll/index')
+const {
+  replLive,
+  onTab,
+  onLine,
+  onInput,
+  onStop,
+  onSubmit,
+} = require('../repll/index')
 const c = require('chalk')
 const { findIssuePR, gitCommit } = require('./git')
 const { checkType, checkScope, checkDes } = require('./continuousCheck')
@@ -53,7 +60,7 @@ onTab(v => {
 })
 
 onSubmit(() => {
-  gitCommit(process.argv[2], commitMes.join('\n\n'))
+  repll.refresh(gitCommit(process.argv[2], commitMes.join('\n\n')))
 })
 
 function printTips(name) {
