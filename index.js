@@ -1,10 +1,13 @@
-const { replLive, onTab, onLine, onInput } = require('repll')
+const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('../repll/index')
 const c = require('chalk')
+const { findIssuePR, gitCommit } = require('./git')
 const { checkType, checkScope, checkDes } = require('./continuousCheck')
 const { typeMap, areaDes } = require('./convention')
 const { prompts, placeholder } = require('./repl')
 
 const repll = replLive(prompts, placeholder[0])
+
+let commitMes = ''
 
 onLine(l => {
   switch (l) {
@@ -17,9 +20,9 @@ onLine(l => {
       break
     }
     case 4: {
-      const commit = repll.history.filter(e => e.length)
+      commitMes = repll.history.filter(e => e.length)
       repll.refresh(
-        c`\n{yellow ${commit.join(
+        c`\n{yellow ${commitMes.join(
           '\n\n'
         )}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
       )
@@ -28,6 +31,14 @@ onLine(l => {
   }
   if (placeholder[l - 1]) return placeholder[l - 1]
 })
+
+onStop(() => {
+  if (repll.inputLine > 1 && !repll.issued) {
+    const issuePR = findIssuePR(repll)
+    if (issuePR === true) repll.issued = true
+    else if (issuePR) repll.refresh(`\n${issuePR}`)
+  }
+}, 0.5)
 
 onInput(() => {
   continuousCheck()
@@ -39,6 +50,10 @@ onTab(v => {
     e => e.startsWith(v) && e.length > v.length
   )
   return repll.inputLine === 1 ? [selectedList, typeMap] : [[]]
+})
+
+onSubmit(() => {
+  gitCommit(process.argv[2], commitMes.join('\n\n'))
 })
 
 function printTips(name) {

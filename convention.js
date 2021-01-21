@@ -18,18 +18,17 @@ const convention = {
   areaDes: {
     type: 'Add a <type>: a noun, feat, fix, etc.',
     scope:
-      'Optionally add a (scope): describing a section of the codebase surrounded by parenthesis',
+      'Optionally Add a (scope): describing a section of the codebase surrounded by parenthesis',
     des: 'Now add <description>: a short summary of the code changes',
-    body:
-      'Now optionally add [body]: providing additional contextual information',
-    footer: 'Now optionally add [footers]',
+    body: 'Optionally Add [body]: providing additional contextual information',
+    footer: 'Optionally add [footers]',
   },
 }
 
 const { areaDes } = convention
 
 Object.keys(areaDes).forEach(e => {
-  areaDes[e] = c`{cyan ${areaDes[e]}}`
+  areaDes[e] = c`\n{cyan ${areaDes[e]}}`
 })
 
 for (const i in convention) {
