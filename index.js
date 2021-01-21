@@ -1,4 +1,4 @@
-const { replLive, onTab, onLine, onInput } = require('../repll/index')
+const { replLive, onTab, onLine, onInput } = require('repll')
 const { checkType, checkScope, checkDes } = require('./continuousCheck')
 const { typeMap, areaDes } = require('./convention')
 const { prompts, placeholder } = require('./repl')
@@ -20,6 +20,7 @@ onLine(l => {
       repll.refresh(
         `${commit.join('\n\n')}\nPress ctrl+d to commit it, ctrl+c to quit`
       )
+      // console.log(repll.history)
       break
     }
   }
@@ -27,11 +28,7 @@ onLine(l => {
 })
 
 onInput(() => {
-  // Continuous check
-  if (repll.inputLine === 1)
-    if (printTips('type') || checkType(repll))
-      if (printTips('scope') || checkScope(repll))
-        printTips('des') || checkDes(repll)
+  continuousCheck()
 })
 
 onTab(v => {
@@ -44,4 +41,12 @@ onTab(v => {
 function printTips(name) {
   repll.refresh(areaDes[name])
   return false
+}
+
+// Continuous check
+function continuousCheck() {
+  if (repll.inputLine === 1)
+    if (printTips('type') || checkType(repll))
+      if (printTips('scope') || checkScope(repll))
+        printTips('des') || checkDes(repll)
 }

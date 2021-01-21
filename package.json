@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "write conventional commits livly",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beetcb/commitlive.git"
@@ -22,6 +20,7 @@
   },
   "homepage": "https://github.com/beetcb/commitlive#readme",
   "dependencies": {
-    "repll": "^1.1.9"
-  }
+    "repll": "^1.2.1"
+  },
+  "devDependencies": {}
 }
