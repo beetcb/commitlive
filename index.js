@@ -1,12 +1,6 @@
-const {
-  replLive,
-  onTab,
-  onLine,
-  onInput,
-  onStop,
-  onSubmit,
-} = require('../repll/index')
 const c = require('chalk')
+const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
+const lint = require('./lint')
 const { findIssuePR, gitCommit } = require('./git')
 const { checkType, checkScope, checkDes } = require('./continuousCheck')
 const { typeMap, areaDes } = require('./convention')
@@ -48,7 +42,7 @@ onStop(() => {
 }, 0.5)
 
 onInput(() => {
-  continuousCheck()
+  continuousCheck() && lint(repll)
 })
 
 onTab(v => {
@@ -72,6 +66,8 @@ function printTips(name) {
 function continuousCheck() {
   if (repll.inputLine === 1)
     if (printTips('type') || checkType(repll))
-      if (printTips('scope') || checkScope(repll))
+      if (printTips('scope') || checkScope(repll)) {
         printTips('des') || checkDes(repll)
+        return true
+      }
 }

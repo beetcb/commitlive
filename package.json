@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/beetcb/commitlive#readme",
   "dependencies": {
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/format": "^11.0.0",
+    "@commitlint/lint": "^11.0.0",
+    "@commitlint/load": "^11.0.0",
+    "ansi-escapes": "git+https://github.com/sindresorhus/ansi-escapes.git",
     "chalk": "^4.1.0",
     "repll": "^1.2.2"
   },
