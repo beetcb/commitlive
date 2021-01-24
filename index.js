@@ -42,7 +42,8 @@ onStop(() => {
 }, 0.5)
 
 onInput(() => {
-  continuousCheck() && lint(repll)
+  if (repll.inputLine === 1) continuousCheck() && lint(repll)
+  else lint(repll)
 })
 
 onTab(v => {
@@ -55,6 +56,7 @@ onTab(v => {
 
 onSubmit(() => {
   repll.refresh(gitCommit(process.argv[2], commitMes.join('\n\n')))
+  process.exit()
 })
 
 function printTips(name) {
@@ -65,7 +67,7 @@ function printTips(name) {
 // Continuous check
 function continuousCheck() {
   if (repll.inputLine === 1)
-    if (printTips('type') || checkType(repll))
-      if (printTips('scope') || checkScope(repll))
-        if (printTips('des') || checkDes(repll)) return true
+    if (checkType(repll) || printTips('type'))
+      if (checkScope(repll) || printTips('scope'))
+        if (checkDes(repll) || printTips('des')) return true
 }

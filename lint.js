@@ -6,17 +6,19 @@ const CONFIG = {
   extends: ['@commitlint/config-conventional'],
 }
 
-module.exports = repll =>
-  load(CONFIG)
+let savedMes = ['', '', '']
+
+module.exports = repll => {
+  savedMes[repll.history.length] = repll.input.replace(/\s{3,}/g, '\n')
+  return load(CONFIG)
     .then(opts =>
       lint(
-        repll.input,
+        savedMes.filter(e => e.length).join('\n\n'),
         opts.rules,
         opts.parserPreset ? { parserOpts: opts.parserPreset.parserOpts } : {}
       )
     )
-    .then(
-      report =>
-        !Boolean(report.valid) &&
-        repll.refresh('\n' + format({ results: [report] }))
+    .then(report =>
+      repll.refresh('\n' + format({ results: [report] }, { verbose: true }))
     )
+}
