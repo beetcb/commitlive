@@ -8,7 +8,7 @@ const { prompts, placeholder } = require('./repl')
 
 const repll = replLive(prompts, placeholder[0])
 
-let commitMes = ''
+let commitMes = []
 
 onLine(l => {
   switch (l) {
@@ -25,7 +25,7 @@ onLine(l => {
       repll.refresh(
         c`\n{yellow ${commitMes.join(
           '\n\n'
-        )}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
+        )}\n\n}{red Press ctrl+s to commit it, ctrl+c to quit}`
       )
       break
     }
@@ -47,7 +47,7 @@ onInput(() => {
 })
 
 onTab(v => {
-  // continuousCheck()
+  continuousCheck()
   const selectedList = Object.keys(typeMap).filter(
     e => e.startsWith(v) && e.length > v.length
   )
@@ -55,8 +55,12 @@ onTab(v => {
 })
 
 onSubmit(() => {
-  repll.refresh(gitCommit(process.argv[2], commitMes.join('\n\n')))
-  process.exit()
+  const commit = gitCommit(process.argv[2], commitMes.join('\n\n'))
+  if (commit) {
+    // If we have message to print, we shall not restore cursor
+    repll.write(commit)
+    process.exit()
+  }
 })
 
 function printTips(name) {

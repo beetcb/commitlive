@@ -1,5 +1,5 @@
 {
-  "name": "commitlive",
+  "name": "@beetcb/commitlive",
   "version": "1.0.0",
   "description": "write conventional commits livly",
   "main": "index.js",
@@ -26,7 +26,7 @@
     "@commitlint/lint": "^11.0.0",
     "@commitlint/load": "^11.0.0",
     "chalk": "^4.1.0",
-    "repll": "^1.2.8"
+    "repll": "^1.2.9"
   },
   "devDependencies": {}
 }
