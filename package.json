@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "commitlive",
+  "version": "1.0.1",
+=======
+  "name": "@beetcb/commitlive",
   "version": "1.0.0",
+>>>>>>> 30199c79a14216910ee0fb7f0d3d3b964fd9ea2b
   "description": "write conventional commits livly",
   "main": "index.js",
   "scripts": {},
@@ -14,7 +19,9 @@
     "repll"
   ],
   "author": "beetcb",
-  "bin": "./index.js",
+  "bin": {
+    "commitlive": "index.js"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/beetcb/commitlive/issues"
@@ -26,7 +33,7 @@
     "@commitlint/lint": "^11.0.0",
     "@commitlint/load": "^11.0.0",
     "chalk": "^4.1.0",
-    "repll": "^1.2.8"
+    "repll": "^1.2.9"
   },
   "devDependencies": {}
 }

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const c = require('chalk')
 const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
 const lint = require('./lint')
@@ -8,7 +9,7 @@ const { prompts, placeholder } = require('./repl')
 
 const repll = replLive(prompts, placeholder[0])
 
-let commitMes = ''
+let commitMes = []
 
 onLine(l => {
   switch (l) {
@@ -25,7 +26,7 @@ onLine(l => {
       repll.refresh(
         c`\n{yellow ${commitMes.join(
           '\n\n'
-        )}\n\n}{red Press ctrl+d to commit it, ctrl+c to quit}`
+        )}\n\n}{red Press ctrl+s to commit it, ctrl+c to quit}`
       )
       break
     }
@@ -47,7 +48,10 @@ onInput(() => {
 })
 
 onTab(v => {
-  // continuousCheck()
+<<<<<<< HEAD
+=======
+  continuousCheck()
+>>>>>>> 30199c79a14216910ee0fb7f0d3d3b964fd9ea2b
   const selectedList = Object.keys(typeMap).filter(
     e => e.startsWith(v) && e.length > v.length
   )
@@ -55,8 +59,12 @@ onTab(v => {
 })
 
 onSubmit(() => {
-  repll.refresh(gitCommit(process.argv[2], commitMes.join('\n\n')))
-  process.exit()
+  const commit = gitCommit(process.argv[2], commitMes.join('\n\n'))
+  if (commit) {
+    // If we have message to print, we shall not restore cursor
+    repll.write(commit)
+    process.exit()
+  }
 })
 
 function printTips(name) {
