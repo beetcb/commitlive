@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "commitlive",
   "version": "1.0.1",
-=======
-  "name": "@beetcb/commitlive",
-  "version": "1.0.0",
->>>>>>> 30199c79a14216910ee0fb7f0d3d3b964fd9ea2b
   "description": "write conventional commits livly",
   "main": "index.js",
   "scripts": {},

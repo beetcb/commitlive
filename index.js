@@ -48,10 +48,7 @@ onInput(() => {
 })
 
 onTab(v => {
-<<<<<<< HEAD
-=======
   continuousCheck()
->>>>>>> 30199c79a14216910ee0fb7f0d3d3b964fd9ea2b
   const selectedList = Object.keys(typeMap).filter(
     e => e.startsWith(v) && e.length > v.length
   )
