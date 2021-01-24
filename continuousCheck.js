@@ -17,4 +17,4 @@ exports.checkScope = repll => {
   return scopePassed
 }
 
-exports.checkDes = repll => /(.+)$/.test(repll.input)
+exports.checkDes = repll => /\s(.+)$/.test(repll.input)
