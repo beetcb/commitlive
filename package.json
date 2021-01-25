@@ -14,9 +14,7 @@
     "repll"
   ],
   "author": "beetcb",
-  "bin": {
-    "commitlive": "index.js"
-  },
+  "bin": "index.js",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/beetcb/commitlive/issues"
@@ -28,6 +26,6 @@
     "@commitlint/lint": "^11.0.0",
     "@commitlint/load": "^11.0.0",
     "chalk": "^4.1.0",
-    "repll": "^1.3.0"
+    "repll": "^1.3.1"
   }
 }

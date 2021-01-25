@@ -48,7 +48,6 @@ onInput(() => {
 })
 
 onTab(v => {
-  continuousCheck()
   const selectedList = Object.keys(typeMap).filter(
     e => e.startsWith(v) && e.length > v.length
   )
@@ -71,8 +70,7 @@ function printTips(name) {
 
 // Continuous check
 function continuousCheck() {
-  if (repll.inputLine === 1)
-    if (checkType(repll) || printTips('type'))
-      if (checkScope(repll) || printTips('scope'))
-        if (checkDes(repll) || printTips('des')) return true
+  if (checkType(repll) || printTips('type'))
+    if (checkScope(repll) || printTips('scope'))
+      if (checkDes(repll) || printTips('des')) return true
 }
