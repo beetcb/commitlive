@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 const c = require('chalk')
 const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
-const lint = require('./lint')
-const { findIssuePR, gitCommit } = require('./git')
-const { checkType, checkScope, checkDes } = require('./continuousCheck')
-const { typeMap, areaDes } = require('./convention')
-const { prompts, placeholder } = require('./repl')
+const lint = require('./src/lint')
+const { findIssuePR, gitCommit } = require('./src/git')
+const { checkType, checkScope, checkDes } = require('./src/continuousCheck')
+const { typeMap, areaDes } = require('./src/convention')
+const { prompts, placeholder } = require('./src/repl')
 
 const repll = replLive(prompts, placeholder[0])
 
