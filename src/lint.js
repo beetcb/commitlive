@@ -39,14 +39,11 @@ const CONFIG = {
   },
 }
 
-let savedMes = ['', '', '']
-
 module.exports = repll => {
-  savedMes[repll.history.length] = repll.input.replace(/\s{3,}/g, '\n')
   return load(CONFIG)
     .then(opts =>
       lint(
-        savedMes.filter(e => e.length).join('\n\n'),
+        repll.history.filter(e => e.length).join('\n\n'),
         opts.rules,
         opts.parserPreset ? { parserOpts: opts.parserPreset.parserOpts } : {}
       )
