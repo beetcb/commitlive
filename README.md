@@ -14,7 +14,7 @@
 
 - `find issues for you`: when you start typing `#` with a number, we will search for issues on github, it's based on [gh cli](https://github.com/cli/cli), make sure it's installed and configured
 
-- `conventional commit lint`: while you are typing, we lint it for you using the great [commitlint](https://github.com/conventional-changelog/commitlint)
+- `conventional commit lint`: while you are typing, we lint it for you using the great [commitlint](https://github.com/conventional-changelog/commitlint)(!NOTE: When linting, we won't prompt \<body\> & \<footer\> as an input, this avoids overwhelming output message)
 
 - `focus more on typing rather than choosing`: some other commit tools pop up prompts for the user to select, whereas in `commitlive` you just type something and press tab to complete, which I think is closer to the way we interact with command line
 

@@ -50,6 +50,8 @@ module.exports = repll => {
     )
     .then(report =>
       repll.refresh(
+        // https://github.com/conventional-changelog/commitlint/blob/31818eabc50627ff0c00dd4e363c9cc66f8bcf18/%40commitlint/format/src/format.ts#L45
+        // When linting, we won't prompt <body> & <footer>, this avoids overwhelming input message
         `\n${format(
           { results: [report] },
           { verbose: true, helpUrl: 'www.conventionalcommits.org' }
