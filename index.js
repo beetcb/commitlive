@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 const c = require('chalk')
-const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
 const lint = require('./src/lint')
+const prompts = require('./src/prompts')
+const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
 const { findIssuePR, gitCommit } = require('./src/git')
 const { checkType, checkScope, checkDes } = require('./src/continuousCheck')
 const { typeMap, areaDes } = require('./src/convention')
-const { prompts, placeholder } = require('./src/repl')
 
-const repll = replLive(prompts, placeholder[0])
+const repll = replLive(prompts)
 
 let commitMes = []
 
@@ -31,7 +31,6 @@ onLine(l => {
       break
     }
   }
-  if (placeholder[l - 1]) return placeholder[l - 1]
 })
 
 onStop(() => {
