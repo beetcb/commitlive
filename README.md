@@ -22,8 +22,14 @@
 
 ### Usage
 
-```js
+Install it globally or run it directly using `npx`
+
+```sh
 npm i -g commitlive
+```
+
+```sh
+npx commitlive
 ```
 
 Run commitlive to commit your staged changes:

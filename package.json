@@ -1,9 +1,11 @@
 {
   "name": "commitlive",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "write conventional commits livly",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pub": "parcel build index.js --target node --no-source-maps && npm publish"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beetcb/commitlive.git"
@@ -14,10 +16,9 @@
     "repll"
   ],
   "author": "beetcb",
-  "bin": "index.js",
+  "bin": "dist/index.js",
   "files": [
-    "src/",
-    "index.js"
+    "dist/"
   ],
   "license": "ISC",
   "bugs": {
@@ -29,6 +30,9 @@
     "@commitlint/lint": "^12.0.0",
     "@commitlint/load": "^12.0.0",
     "chalk": "^4.1.0",
-    "repll": "^1.3.8"
+    "repll": "^1.3.9"
+  },
+  "devDependencies": {
+    "parcel-plugin-shebang": "1.3.2"
   }
 }
