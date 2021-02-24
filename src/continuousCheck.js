@@ -6,11 +6,11 @@ exports.checkType = repll =>
   Object.keys(typeMap).some(e => repll.input.startsWith(e))
 
 exports.checkScope = repll => {
-  if (/\(\w+\)$/.test(repll.input)) {
+  if (/!?\(\w+\)$/.test(repll.input)) {
     repll.write(': ')
     scopePassed = true
   }
-  if (/\:$/.test(repll.input)) {
+  if (/!?\:$/.test(repll.input)) {
     repll.write(' ')
     scopePassed = true
   }
