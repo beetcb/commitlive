@@ -2,7 +2,7 @@
 const c = require('chalk')
 const lint = require('./src/lint')
 const prompts = require('./src/prompts')
-const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('../repll/index')
+const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
 const { findIssuePR, gitCommit } = require('./src/git')
 const { checkType, checkScope, checkDes } = require('./src/continuousCheck')
 const { typeMap, areaDes } = require('./src/convention')
