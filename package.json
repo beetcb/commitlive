@@ -1,8 +1,7 @@
 {
   "name": "commitlive",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "write conventional commits livly",
-  "main": "index.js",
   "scripts": {
     "pub": "parcel build index.js --target node --no-source-maps && npm publish"
   },
@@ -30,7 +29,7 @@
     "@commitlint/lint": "^12.0.0",
     "@commitlint/load": "^12.0.0",
     "chalk": "^4.1.0",
-    "repll": "^1.4.2"
+    "repll": "^1.4.3"
   },
   "devDependencies": {
     "parcel-plugin-shebang": "1.3.2"
