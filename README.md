@@ -22,6 +22,8 @@
 
 ### Usage
 
+**NOTE! You must have NodeJS v13.5.0+(v12.16.0+) installed in order to get `commitlive` up and running**
+
 Install it globally or run it directly using `npx`
 
 ```sh
