@@ -1,6 +1,6 @@
 {
   "name": "commitlive",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "write conventional commits livly",
   "scripts": {
     "pub": "parcel build index.js --target node --no-source-maps && npm publish"

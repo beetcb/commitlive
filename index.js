@@ -22,7 +22,6 @@ onLine(l => {
       break
     }
     case 4: {
-      commitMes = repll.history.filter(e => e.length)
       repll.refresh(
         c`\n{yellow ${commitMes.join(
           '\n\n'
@@ -42,6 +41,7 @@ onStop(() => {
 }, 0.5)
 
 onInput(() => {
+  commitMes = repll.history.filter(e => e.length)
   if (repll.inputLine === 1) continuousCheck() && lint(repll)
   else lint(repll)
 })
