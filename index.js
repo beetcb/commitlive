@@ -2,14 +2,24 @@
 const c = require('chalk')
 const lint = require('./src/lint')
 const prompts = require('./src/prompts')
-const { replLive, onTab, onLine, onInput, onStop, onSubmit } = require('repll')
 const { findIssuePR, gitCommit } = require('./src/git')
 const { checkType, checkScope, checkDes } = require('./src/continuousCheck')
 const { typeMap, areaDes } = require('./src/convention')
+const {
+  replLive,
+  onAny,
+  onTab,
+  onLine,
+  onInput,
+  onStop,
+  onSubmit,
+} = require('repll')
 
 const repll = replLive(prompts)
 
 let commitMes = []
+
+onAny(() => (commitMes = repll.history.filter(e => e.length)))
 
 onLine(l => {
   switch (l) {
@@ -41,7 +51,6 @@ onStop(() => {
 }, 0.5)
 
 onInput(() => {
-  commitMes = repll.history.filter(e => e.length)
   if (repll.inputLine === 1) continuousCheck() && lint(repll)
   else lint(repll)
 })
