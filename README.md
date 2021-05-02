@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/beetcb/commitlive">
-    <img src="https://git.beetcb.com/?path=/img/commitlive.svg" alt="demo" width="600">
+    <img src="assets/demo.svg" alt="demo" width="600">
   </a>
   <h3 align="center">commitlive: livly cli to make conventional commit</h3>
   <p align="center">
